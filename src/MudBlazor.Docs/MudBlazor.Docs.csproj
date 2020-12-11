@@ -34,8 +34,12 @@
     <Folder Include="Pages\Components\Overlay\Code\" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <SolutionDir Condition=" '$(SolutionDir)' == '' ">$(MSBuildThisFileDirectory)..\</SolutionDir>
+  </PropertyGroup>
+
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <!--<Exec Command="$(SolutionDir)MudBlazor.Docs.Compiler\bin\Debug\netcoreapp3.1\MudBlazor.Docs.Compiler.exe" />-->
+    <Exec Command="dotnet run --project $(SolutionDir)MudBlazor.Docs.Compiler/MudBlazor.Docs.Compiler.csproj" />
   </Target>
 
   <Target Name="FileWatch" BeforeTargets="_CoreCollectWatchItems">
